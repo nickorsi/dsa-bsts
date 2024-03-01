@@ -11,13 +11,12 @@ function insertRecur(bst: BSTNum, val: number): void {
 
   else {
 
-    function _traverseNodes(node: BNodeNum | null, newNode: BNodeNum): void{
-      if(node === null) node = newNode;
-      else if (newNode.val < node.val) {
+    function _traverseNodes(node: BNodeNum, newNode: BNodeNum): void{
+      if (newNode.val < node.val) {
         if(node.left === null) node.left = newNode;
         else _traverseNodes(node.left, newNode)
       }
-      else if (newNode.val > node.val) {
+      else {
         if(node.right === null) node.right = newNode;
         else _traverseNodes(node.right, newNode);
       }

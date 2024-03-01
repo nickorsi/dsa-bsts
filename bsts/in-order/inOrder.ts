@@ -5,13 +5,14 @@ import { BNodeNum } from "../common/bst";
 
 function inOrder(node: BNodeNum | null): number[] {
   if (node === null) return [];
-  let leftValues:number[] = [];
-  let rightValues:number[] = [];
+  // let leftValues:number[] = [];
+  // let rightValues:number[] = [];
 
-  if (node.left) leftValues = inOrder(node.left);
-  if (node.right) rightValues = inOrder(node.right);
+  // if (node.left) leftValues = inOrder(node.left);
+  // if (node.right) rightValues = inOrder(node.right);
 
-  return [...leftValues, node.val, ...rightValues];
+  // return [...leftValues, node.val, ...rightValues];
+  return [...inOrder(node.left), node.val, ...inOrder(node.right)];
 
 }
 
@@ -25,7 +26,11 @@ function inOrder(node: BNodeNum | null): number[] {
 function inOrderAccum(
     node: BNodeNum | null = null,
     accum: number[] = []): number[] {
-  return [42];
+  if(node === null) return accum;
+  if(node.left) accum = inOrderAccum(node.left, accum);
+  accum.push(node.val)
+  if(node.right) accum = inOrderAccum(node.right, accum);
+  return accum;
 }
 
 
