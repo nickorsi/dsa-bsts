@@ -9,7 +9,6 @@ function bfs(node: BNodeNum | null): number[] {
   if(node === null) return [];
 
   const nodeQueue = new Queue([node]);
-  debugger;
   const visistedNodeValues: number[] = [];
 
   while(!nodeQueue.isEmpty()) {
